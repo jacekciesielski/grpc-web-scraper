@@ -1,0 +1,7 @@
+version: '3'
+services:
+  envoy:
+    image: envoyproxy/envoy-dev:adf97d39fbbf64b24a3b143a5dc4a159a1cfc196
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
+    network_mode: host
