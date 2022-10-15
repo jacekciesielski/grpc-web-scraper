@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "./grpc-web-scraper";
+
+//package grpc_web_scraper;
+
+service Scrape {
+  // Sends a greeting
+  rpc TryScrapping (ScrapeRequest) returns (ScrapeReply) {}
+}
+
+message ScrapeRequest {
+}
+
+message ScrapeReply {
+  int32 int_field = 1;
+  string string_field = 2;
+}
