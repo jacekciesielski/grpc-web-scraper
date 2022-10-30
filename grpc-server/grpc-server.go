@@ -1,13 +1,14 @@
 package main
 
 import (
-	"context"
-	"flag"
-	"fmt"
-	"log"
-	"net"
+  "context"
+  "flag"
+  "fmt"
+  "log"
+  "math/rand"
+  "net"
 
-	"google.golang.org/grpc"
+  "google.golang.org/grpc"
   pb "grpc-web-scraper/grpc-server/grpc-web-scraper"
 )
 
@@ -20,9 +21,31 @@ type server struct {
 	pb.UnimplementedScrapeServer
 }
 
+var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+func randSeq(n int) string {
+    b := make([]rune, n)
+    for i := range b {
+        b[i] = letters[rand.Intn(len(letters))]
+    }
+    return string(b)
+}
+
+func makeInnerTypeMember(n int) []*pb.InnerType {
+  ret := make([]*pb.InnerType, n)
+  for i := range ret {
+    ret[i] = new(pb.InnerType)
+    ret[i].I = int32(i)
+  }
+
+  return ret
+}
+
 func (s *server) TryScrapping(ctx context.Context, in *pb.ScrapeRequest) (*pb.ScrapeReply, error) {
-	log.Printf("Received request")
-  return &pb.ScrapeReply{IntField: 1, StringField: "ddd"}, nil
+  log.Printf("Received request string_lenght=%d inner_type_length=%d", in.GetStringLenght(), in.GetInnerTypeLenght())
+  reply := pb.ScrapeReply{IntField: 100, StringField: randSeq(int(in.GetStringLenght()))}
+  reply.InnerTypeFields = makeInnerTypeMember(int(in.GetInnerTypeLenght()))
+  return &reply, nil
 }
 
 func main() {
