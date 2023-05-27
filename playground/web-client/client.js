@@ -7,7 +7,7 @@ function main() {
   request.setStringLenght(1024);
   request.setInnerTypeLenght(10);
 
-  client.tryScrapping(request, {}, function(err, response) {
+  client.tryScraping(request, {}, function(err, response) {
     console.log('Response ', response.toObject());
   })
 }

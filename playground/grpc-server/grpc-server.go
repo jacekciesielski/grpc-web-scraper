@@ -41,8 +41,8 @@ func makeInnerTypeMember(n int) []*pb.InnerType {
   return ret
 }
 
-func (s *server) TryScrapping(ctx context.Context, in *pb.ScrapeRequest) (*pb.ScrapeReply, error) {
-  log.Printf("Received request string_lenght=%d inner_type_length=%d", in.GetStringLenght(), in.GetInnerTypeLenght())
+func (s *server) TryScraping(ctx context.Context, in *pb.ScrapeRequest) (*pb.ScrapeReply, error) {
+  log.Printf("Received request string_lenght=%d inner_type_lenght=%d", in.GetStringLenght(), in.GetInnerTypeLenght())
   reply := pb.ScrapeReply{IntField: 100, StringField: randSeq(int(in.GetStringLenght()))}
   reply.InnerTypeFields = makeInnerTypeMember(int(in.GetInnerTypeLenght()))
   return &reply, nil

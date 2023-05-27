@@ -5,8 +5,7 @@ option go_package = "./grpc-web-scraper";
 package grpc_web_scraper;
 
 service Scrape {
-  // Sends a greeting
-  rpc TryScrapping (ScrapeRequest) returns (ScrapeReply) {}
+  rpc TryScraping (ScrapeRequest) returns (ScrapeReply) {}
 }
 
 message InnerType {
