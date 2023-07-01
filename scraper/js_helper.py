@@ -58,6 +58,6 @@ def get_js_source(url: str) -> str:
     return response.text
 
 
-def _remove_comments(js_source: str) -> None:
+def _remove_comments(js_source: str) -> str:
     COMMENT_PATTERN = "//[^\\n]*|/\\*.*?\\*/"
     return re_sub(COMMENT_PATTERN, " ", js_source, 0, DOTALL)
