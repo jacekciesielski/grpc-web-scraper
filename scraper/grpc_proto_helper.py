@@ -12,7 +12,9 @@ def get_proto_message_namespace_definitions(message_name: str) -> str:
     inner_namespaces_definitions = "".join(
         map(lambda namespace: f"{namespace}: {{", inner_namespaces)
     ) + "}" * len(inner_namespaces)
-    namespaces_definitions = f"{outmost_namespace} = {{{inner_namespaces_definitions}}};\n"
+    namespaces_definitions = (
+        f"{outmost_namespace} = {{{inner_namespaces_definitions}}};\n"
+    )
 
     return namespaces_definitions
 

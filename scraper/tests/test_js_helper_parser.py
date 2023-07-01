@@ -1,8 +1,7 @@
 from unittest import TestCase
 
-
-from js_helper import Parser
 from grpc_proto_helper import GRPC_MESSAGE_PATTERN, MESSAGE_PATTERN
+from js_helper import Parser
 
 
 SIMPLE_CLASS_NAME = "proto.ScrapeReply"
@@ -171,7 +170,9 @@ multiline comment
 
         self.assertEqual(EXPECTED, definitions)
 
-    def test_When_given_unknown_message_namespace_Will_make_correct_namespace_definition(self):
+    def test_When_given_unknown_message_namespace_Will_make_correct_namespace_definition(
+        self,
+    ):
         REPLACEMENT = "replacement"
         SOURCE = (
             "o.Message.deserializeInt(blah blah);\nn.Message.deserializeInt(blah blah);"

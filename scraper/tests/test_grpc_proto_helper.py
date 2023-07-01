@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from grpc_proto_helper import get_proto_message_namespace_definitions, MessageWrapper
+from grpc_proto_helper import MessageWrapper, get_proto_message_namespace_definitions
 
 
 class GetProtoMessageNamespaceDefinitionsTest(TestCase):
@@ -39,5 +39,5 @@ class MessageWrapperTest(TestCase):
                         0x07, 0x52, 0x02, 0x08, 0x08, 0x52, 0x02, 0x08, 0x09))
         # fmt: on
         message_wrapper = MessageWrapper(BUFFER)
-        EXPECTED = BUFFER[5:5+0x34]
+        EXPECTED = BUFFER[5 : 5 + 0x34]
         self.assertEqual(EXPECTED, message_wrapper.payload)

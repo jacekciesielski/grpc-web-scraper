@@ -1,8 +1,9 @@
 from itertools import chain
-from regex import DOTALL, escape, finditer, Pattern, sub as re_sub
-from requests import get as requests_get
 from typing import Iterable, Union
 from urllib.parse import urlsplit
+
+from regex import DOTALL, Pattern, escape, finditer, sub as re_sub
+from requests import get as requests_get
 
 
 class Parser:

@@ -1,9 +1,10 @@
-from base64 import b64decode
 from json import loads
 from logging import getLogger
 from os.path import dirname, join, realpath
 from sys import argv
 from typing import Any
+
+from requests import post
 
 from configuration import parse
 from grpc_proto_helper import (
@@ -12,14 +13,13 @@ from grpc_proto_helper import (
     HEADERS,
     INHERITS_PATTERN,
     MESSAGE_PATTERN,
-    PRELUDE,
     MessageWrapper,
+    PRELUDE,
     get_body,
     get_proto_message_namespace_definitions,
 )
 from js_helper import Parser, get_js_source
 from node_helper import NodeExecutor
-from requests import post
 
 _JS_FILE_NAME = "output.js"
 _RESPONSE_FILE_NAME = "response.bin"
